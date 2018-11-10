@@ -3,7 +3,7 @@ const friends = require('../data/friends');
 // ---------------------------------------------------------------------------------------------------------------------
 // This function adds the Math.min capability to the Array.Prototype, which will be used later (line ) in finding
 // our best compatibility match.
-Array.min = function(array) {
+Array.min = function (array) {
     return Math.min.apply(Math, array)
 };
 
@@ -15,8 +15,8 @@ module.exports = function (app) {
         res.json(friends)
     });
 
-    // Route to respond the the users input and POST their data to the friends.js.
-    // Also performs the calculations in order to determine compatibility.
+    // POST route that receives the users input for the quiz, it then performs the necessary comparison calculations
+    // in order to determine compatibility, and then delivers the object for the best match individual.
     app.post('/api/friends', function (req, res) {
         /*Array.min = function(array) {
             return Math.min.apply(Math, array)
@@ -38,12 +38,12 @@ module.exports = function (app) {
         //console.log(typeof newUser.scores[2]);
         //console.log(typeof friends[0].scores[2]);
 
-        friends.forEach(function(friend) {
+        friends.forEach(function (friend) {
             console.log(friend.scores);
             console.log(newUser.scores);
 
             let comparisonArray = [];
-            for (let v = 0; v <friend.scores.length; v++) {
+            for (let v = 0; v < friend.scores.length; v++) {
                 comparisonArray.push(Math.abs(friend.scores[v] - newUser.scores[v]));
             }
             console.log(`compare ${comparisonArray}`);
@@ -60,9 +60,8 @@ module.exports = function (app) {
 
         res.json(friends[bestIndex]);
 
+        friends.push(newUser);
 
-        //friends.push(newUser);
-
-        console.log('new testtaker added')
+        console.log('New User Added, and Response Sent')
     });
 };
