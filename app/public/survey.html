@@ -259,14 +259,18 @@
 
     function checkForm() {
         let validResponse = true;
+
         $(".form-control").each(function() {
+
             if ($(this).val().trim() === "") {
                 validResponse = false;
                 console.log(validResponse)
             }
         });
+
         $(".custom-select").each(function() {
-            if (parseInt($(this).val()) === NaN) {
+
+            if (isNaN(parseInt($(this).val()))) {
                 validResponse = false;
                 console.log(validResponse)
             }
