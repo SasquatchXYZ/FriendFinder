@@ -234,29 +234,40 @@
     $("#quiz-results").on("click", function (event) {
         event.preventDefault();
         checkForm();
+        if(checkForm()) {
+            //console.log($("#q1").val().trim());
+            //console.log(parseInt($("#q1").val().trim()));
 
-        /*console.log($("#q1").val().trim());
-        console.log(parseInt($("#q1").val().trim()));
-        let newUserScores = [];
+            let newUserScores = [];
 
-        for (let k = 1; k <= 10; k++) {
-            newUserScores.push(parseInt($(`#q${[k]}`).val()))
+            for (let k = 1; k <= 10; k++) {
+                newUserScores.push(parseInt($(`#q${[k]}`).val()))
+            }
+
+            let newUser = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: newUserScores
+            };
+
+            //console.log(newUser);
+            //console.log(typeof newUser.scores[2]);
+
+            $.post("/api/friends", newUser)
+                .then(function(data) {
+                    console.log("add html:", data);
+                })
+
+
+
+            //console.log('Modal');
+            //$("#quizResultsModal").modal('show');
+        } else {
+            alert("You must fill out all of the fields in order for this to work properly.")
         }
-
-        console.log(newUserScores);
-
-        let newUser = {
-            name: $("#name").val().trim(),
-            photo: $("#photo").val().trim(),
-            scores: newUserScores
-        };
-
-        console.log(newUser);*/
-
-        //console.log('Modal');
-        //$("#quizResultsModal").modal('show');
     });
 
+    // Function to ensure that all of the entry forms are properly filled out, none may be blank.
     function checkForm() {
         let validResponse = true;
 
@@ -276,10 +287,11 @@
             }
         });
 
-        console.log(validResponse);
+        //console.log(validResponse);
         return validResponse
-
     }
+
+
     /*$('document').ready(function() {
         $("#quiz-results").on("click", function() {
             console.log('Modal');
