@@ -245,8 +245,9 @@
 
     $("#quiz-results").on("click", function (event) {
         event.preventDefault();
-        checkForm();
-        if (checkForm()) {
+        checkName();
+        //checkForm2();
+       /* if (checkForm()) {
             //console.log($("#q1").val().trim());
             //console.log(parseInt($("#q1").val().trim()));
 
@@ -276,11 +277,58 @@
 
         } else {
             alert("You must fill out all of the fields in order for this to work properly.")
-        }
+        }*/
     });
 
     // Function to ensure that all of the entry forms are properly filled out, none may be blank.
     // This will need to be improved upon.
+
+    function checkName() {
+        let validResponse = true;
+
+        let checkName = $('#name').val().trim();
+        console.log(checkName);
+        const parse_name = /^([^0-9][a-zA-Z]+)$/;
+
+        if (!parse_name.test(checkName)) {
+            console.log('Name Not Valid');
+            validResponse = false;
+            console.log(validResponse);
+            return validResponse
+        } else if (checkName === "") {
+            console.log('Name Not Entered');
+            validResponse = false;
+            console.log(validResponse);
+            return validResponse
+        }
+
+        console.log(validResponse);
+
+        /*let checkPhoto = $('#photo').val().trim();
+        console.log(checkPhoto);
+        const parse_url = /^((https?|ftp):\/\/.*(jpg|jpeg|png|gif|bmp))$/*/
+
+
+    }
+
+/*    function checkForm2() {
+        let validResponse = true;
+
+        let checkName = $('#name').val().trim();
+        console.log(checkName);
+        const parse_name = /([a-zA-Z][^0-9])$/;
+        if (checkName === "") {
+            validResponse = false;
+            console.log(validResponse)
+        } else
+
+
+        let checkPhoto = $('#photo').val().trim();
+        console.log(checkPhoto);
+        const parse_url = /^((https?|ftp):\/\/.*(jpg|jpeg|png|gif|bmp))$/
+
+    }*/
+
     function checkForm() {
         let validResponse = true;
 
