@@ -243,9 +243,12 @@
 
     $("#quiz-results").on("click", function (event) {
         event.preventDefault();
-        checkName();
+        let validResponse = true;
+        let validity = checkForm(validResponse);
+        //checkForm(validResponse);
         //checkForm2();
-        if (checkForm()) {
+        console.log(validity);
+        if (validity) {
             //console.log($("#q1").val().trim());
             //console.log(parseInt($("#q1").val().trim()));
 
@@ -277,7 +280,7 @@
             $(".custom-select").val('Chose an Option:');
 
         } else {
-            alert("You must fill out all of the fields in order for this to work properly.")
+            alert(validity)
         }
     });
 
@@ -345,8 +348,34 @@
 
     }*/
 
-    function checkForm() {
-        let validResponse = true;
+    function checkForm(validResponse) {
+        //let validResponse;
+
+        let checkName = $('#name').val().trim();
+        console.log(checkName);
+        const parse_name = /^[a-z]+(?:\s?)?(?:[a-z]+)?$/i;
+
+        if (!parse_name.test(checkName)) {
+            console.log('Name Not Valid');
+            validResponse = 'Name Not Valid';
+            console.log(validResponse);
+            return validResponse
+        }
+
+        //console.log(validResponse);
+
+        let checkPhoto = $('#photo').val().trim();
+        console.log(checkPhoto);
+        const parse_url = /^((https?|ftp):\/\/.*\.(?:png|jpg|gif|jpeg|bmp))/i;
+
+        if (!parse_url.test(checkPhoto)) {
+            console.log('Photo Not Valid');
+            validResponse = 'Photo Not Valid';
+            console.log(validResponse);
+            return validResponse;
+        }
+
+        //console.log(validResponse);
 
         /*$(".form-control").each(function () {
 
@@ -357,11 +386,12 @@
         });*/
 
         $(".custom-select").each(function () {
-            console.log($(this).val());
+
+            //console.log($(this).val());
             if (isNaN(parseInt($(this).val()))) {
-                validResponse = false;
+                validResponse = 'Missing a question';
                 console.log('Missing a question');
-                //console.log(validResponse);
+                console.log(validResponse);
                 return validResponse;
             }
             //console.log(validResponse);
