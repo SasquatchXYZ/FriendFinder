@@ -11,8 +11,10 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // ---------------------------------------------------------------------------------------------------------------------
-// Sets up Express to handle data parsing for urlencoded or json formatting types
+// Set up Express to be able to handle static content for the app.
+app.use(express.static('public'));
 
+// Sets up Express to handle data parsing for urlencoded or json formatting types
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
