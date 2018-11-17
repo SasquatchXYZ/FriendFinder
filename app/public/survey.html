@@ -245,7 +245,7 @@
         event.preventDefault();
         checkName();
         //checkForm2();
-       /* if (checkForm()) {
+        if (checkForm()) {
             //console.log($("#q1").val().trim());
             //console.log(parseInt($("#q1").val().trim()));
 
@@ -273,9 +273,12 @@
                     $("#quizResultsModal").modal('show');
                 });
 
+            $(".form-control").val('');
+            $(".custom-select").val('Chose an Option:');
+
         } else {
             alert("You must fill out all of the fields in order for this to work properly.")
-        }*/
+        }
     });
 
     // Function to ensure that all of the entry forms are properly filled out, none may be blank.
@@ -296,14 +299,34 @@
         }
 
         console.log(validResponse);
-
+        checkPhoto();
         /*let checkPhoto = $('#photo').val().trim();
         console.log(checkPhoto);
         const parse_url = /^((https?|ftp):\/\/.*(jpg|jpeg|png|gif|bmp))$/*/
 
-
     }
 
+    function checkPhoto() {
+        let validResponse = true;
+
+        let checkPhoto = $('#photo').val().trim();
+        console.log(checkPhoto);
+        const parse_url = /^((https?|ftp):\/\/.*\.(?:png|jpg|gif|jpeg|bmp))/i;
+
+        if (!parse_url.test(checkPhoto)) {
+            console.log('Photo Not Valid');
+            validResponse = false;
+            console.log(validResponse);
+            return validResponse;
+        }
+
+        console.log(validResponse);
+        checkForm();
+    }
+
+    function checkEntries() {
+
+    }
 /*    function checkForm2() {
         let validResponse = true;
 
@@ -325,24 +348,56 @@
     function checkForm() {
         let validResponse = true;
 
-        $(".form-control").each(function () {
+        /*$(".form-control").each(function () {
 
             if ($(this).val().trim() === "") {
                 validResponse = false;
                 console.log(validResponse)
             }
-        });
+        });*/
 
         $(".custom-select").each(function () {
-
+            console.log($(this).val());
             if (isNaN(parseInt($(this).val()))) {
                 validResponse = false;
-                console.log(validResponse)
+                console.log('Missing a question');
+                //console.log(validResponse);
+                return validResponse;
             }
+            //console.log(validResponse);
+
         });
 
-        //console.log(validResponse);
+        console.log(validResponse);
+        // calculateResults();
         return validResponse
+    }
+
+    function calculateResults() {
+        console.log('dont do that');
+        /*let newUserScores = [];
+
+        for (let k = 1; k <= 10; k++) {
+            newUserScores.push(parseInt($(`#q${[k]}`).val()))
+        }
+
+        let newUser = {
+            name: $("#name").val().trim(),
+            photo: $("#photo").val().trim(),
+            scores: newUserScores
+        };
+
+        //console.log(newUser);
+        //console.log(typeof newUser.scores[2]);
+
+        $.post("/api/friends", newUser)
+            .then(function (data) {
+                console.log(JSON.stringify(data, null, 2));
+                $("#match-name").text(data.name);
+                $("#match-photo").attr('src', data.photo);
+
+                $("#quizResultsModal").modal('show');
+            });*/
     }
 
 </script>
