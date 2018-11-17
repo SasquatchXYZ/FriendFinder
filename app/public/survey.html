@@ -286,15 +286,10 @@
 
         let checkName = $('#name').val().trim();
         console.log(checkName);
-        const parse_name = /^([^0-9][a-zA-Z]+)$/;
+        const parse_name = /^[a-z]+(?:\s?)?(?:[a-z]+)?$/i;
 
         if (!parse_name.test(checkName)) {
             console.log('Name Not Valid');
-            validResponse = false;
-            console.log(validResponse);
-            return validResponse
-        } else if (checkName === "") {
-            console.log('Name Not Entered');
             validResponse = false;
             console.log(validResponse);
             return validResponse
