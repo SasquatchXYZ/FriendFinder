@@ -25,7 +25,6 @@ $("#quiz-results").on("click", function (event) {
                 console.log(JSON.stringify(data, null, 2));
                 $("#match-name").text(data.name);
                 $("#match-photo").attr('src', data.photo);
-
                 $("#quizResultsModal").modal('show');
             });
 

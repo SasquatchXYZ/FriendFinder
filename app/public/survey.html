@@ -249,8 +249,6 @@
         let validity = checkForm(validResponse); // Function call to check form entries.
 
         if (validity === true) {
-            //console.log($("#q1").val().trim());
-            //console.log(parseInt($("#q1").val().trim()));
 
             let newUserScores = [];
 
@@ -264,18 +262,17 @@
                 scores: newUserScores
             };
 
-            //console.log(newUser);
-            //console.log(typeof newUser.scores[2]);
-
+            // POST call to the API route that sends the New User's Quiz Data Object and in turn receives the
+            // comparison data, which it then sends to the modal, and show's the modal.
             $.post("/api/friends", newUser)
                 .then(function (data) {
                     console.log(JSON.stringify(data, null, 2));
                     $("#match-name").text(data.name);
                     $("#match-photo").attr('src', data.photo);
-
                     $("#quizResultsModal").modal('show');
                 });
 
+            // Clears the Quiz Form.
             $(".form-control").val('');
             $(".custom-select").val('Chose an Option:');
 
@@ -283,43 +280,6 @@
             alert(`Warning: ${validity}`)
         }
     });
-
-    function checkName() {
-        let validResponse = true;
-
-        let checkName = $('#name').val().trim();
-        console.log(checkName);
-        const parse_name = /^[a-z]+(?:\s?)?(?:[a-z]+)?$/i;
-
-        if (!parse_name.test(checkName)) {
-            console.log('Name Not Valid');
-            validResponse = false;
-            console.log(validResponse);
-            return validResponse
-        }
-
-        console.log(validResponse);
-
-    }
-
-    function checkPhoto() {
-        let validResponse = true;
-
-        let checkPhoto = $('#photo').val().trim();
-        console.log(checkPhoto);
-        const parse_url = /^((https?|ftp):\/\/.*\.(?:png|jpg|gif|jpeg|bmp))/i;
-
-        if (!parse_url.test(checkPhoto)) {
-            console.log('Photo Not Valid');
-            validResponse = false;
-            console.log(validResponse);
-            return validResponse;
-        }
-
-        console.log(validResponse);
-
-    }
-
 
     function checkForm(validResponse) {
         // Checks the Value entered as the Persons 'Name' and ensures that it is simply letters, and in the
@@ -332,7 +292,6 @@
         if (!parse_name.test(checkName)) {
             console.log('Name Not Valid');
             validResponse = `That is not a valid entry for 'Name'.`;
-            console.log(validResponse);
             return validResponse // Returns Error Message.
         }
 
@@ -344,7 +303,6 @@
         if (!parse_url.test(checkPhoto)) {
             console.log('Photo Not Valid');
             validResponse = `That is not an acceptable photo url.`;
-            console.log(validResponse);
             return validResponse; // Returns Error Message.
         }
 
@@ -355,7 +313,6 @@
             if (isNaN(parseInt($(this).val()))) {
                 validResponse = `Check your Answers... You must answer all of the questions in the survey.`;
                 console.log('Missing a question');
-                console.log(validResponse);
                 return validResponse; // Returns Error Message.
             }
 
