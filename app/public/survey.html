@@ -35,18 +35,18 @@
                     <form method="POST" role="form">
                         <h5 class="card-title">About You</h5>
                         <div class="form-group">
-                            <label for="name">Name: (Required)</label>
-                            <input type="text" class="form-control" id="name">
+                            <label for="name">Name: (Required - Letters Only)</label>
+                            <input type="text" class="form-control" id="name" placeholder="FirstName/FirstName LastName/FirstName LastInitial">
                         </div>
                         <div class="form-group">
                             <label for="photo">Link to a Photo: (Required)</label>
-                            <input type="text" class="form-control" id="photo">
+                            <input type="text" class="form-control" id="photo" placeholder="Valid Photo URL">
                         </div>
                         <hr>
 
                         <div class="form-group">
                             <h5 class="card-title">Question 1</h5>
-                            <label for="q1">My goals in life are clear.</label>
+                            <label for="q1">I can work even when things are disorganized.</label>
                             <select class="custom-select" id="q1">
                                 <option selected>Chose an Option:</option>
                                 <option value="1">1 (Strongly Disagree)</option>
@@ -59,7 +59,8 @@
 
                         <div class="form-group">
                             <h5 class="card-title">Question 2</h5>
-                            <label for="q2">If people are rude to me I just shrug it off.</label>
+                            <label for="q2">I prefer achieving my goals than assisting others to achieve their
+                                goals.</label>
                             <select class="custom-select" id="q2">
                                 <option selected>Chose an Option:</option>
                                 <option value="1">1 (Strongly Disagree)</option>
@@ -72,7 +73,7 @@
 
                         <div class="form-group">
                             <h5 class="card-title">Question 3</h5>
-                            <label for="q3">I can work even when things are disorganized.</label>
+                            <label for="q3">I would describe myself as an extremely competent person.</label>
                             <select class="custom-select" id="q3">
                                 <option selected>Chose an Option:</option>
                                 <option value="1">1 (Strongly Disagree)</option>
@@ -85,7 +86,7 @@
 
                         <div class="form-group">
                             <h5 class="card-title">Question 4</h5>
-                            <label for="q4">I consistently put my full time and effort into everything I do.</label>
+                            <label for="q4">I believe I am more intelligent than most.</label>
                             <select class="custom-select" id="q4">
                                 <option selected>Chose an Option:</option>
                                 <option value="1">1 (Strongly Disagree)</option>
@@ -98,8 +99,7 @@
 
                         <div class="form-group">
                             <h5 class="card-title">Question 5</h5>
-                            <label for="q5">I prefer achieving my goals than assisting others to achieve their
-                                goals.</label>
+                            <label for="q5">I tend to take on other people's problems.</label>
                             <select class="custom-select" id="q5">
                                 <option selected>Chose an Option:</option>
                                 <option value="1">1 (Strongly Disagree)</option>
@@ -112,7 +112,8 @@
 
                         <div class="form-group">
                             <h5 class="card-title">Question 6</h5>
-                            <label for="q6">I would describe myself as an extremely competent person.</label>
+                            <label for="q6">I am able to complete tasks as well as, or better than other
+                                people.</label>
                             <select class="custom-select" id="q6">
                                 <option selected>Chose an Option:</option>
                                 <option value="1">1 (Strongly Disagree)</option>
@@ -125,7 +126,7 @@
 
                         <div class="form-group">
                             <h5 class="card-title">Question 7</h5>
-                            <label for="q7">I prefer working within a stable rather than a flexible environment.</label>
+                            <label for="q7">If people are rude to me I just shrug it off.</label>
                             <select class="custom-select" id="q7">
                                 <option selected>Chose an Option:</option>
                                 <option value="1">1 (Strongly Disagree)</option>
@@ -138,7 +139,7 @@
 
                         <div class="form-group">
                             <h5 class="card-title">Question 8</h5>
-                            <label for="q8">I am ambitious.</label>
+                            <label for="q8">It's better to get a job done than aim for perfection.</label>
                             <select class="custom-select" id="q8">
                                 <option selected>Chose an Option:</option>
                                 <option value="1">1 (Strongly Disagree)</option>
@@ -151,7 +152,7 @@
 
                         <div class="form-group">
                             <h5 class="card-title">Question 9</h5>
-                            <label for="q9">It's better to get a job done than aim for perfection.</label>
+                            <label for="q9">I approach life in an easy-going manner</label>
                             <select class="custom-select" id="q9">
                                 <option selected>Chose an Option:</option>
                                 <option value="1">1 (Strongly Disagree)</option>
@@ -164,8 +165,7 @@
 
                         <div class="form-group">
                             <h5 class="card-title">Question 10</h5>
-                            <label for="q10">I am able to complete tasks as well as, or better than other
-                                people.</label>
+                            <label for="q10">I like to be in charge of other people.</label>
                             <select class="custom-select" id="q10">
                                 <option selected>Chose an Option:</option>
                                 <option value="1">1 (Strongly Disagree)</option>
@@ -241,14 +241,14 @@
 
 <script type="text/javascript">
 
+    // On Click Function for the Submit button for the Quiz.
     $("#quiz-results").on("click", function (event) {
         event.preventDefault();
+
         let validResponse = true;
-        let validity = checkForm(validResponse);
-        //checkForm(validResponse);
-        //checkForm2();
-        console.log(validity);
-        if (validity) {
+        let validity = checkForm(validResponse); // Function call to check form entries.
+
+        if (validity === true) {
             //console.log($("#q1").val().trim());
             //console.log(parseInt($("#q1").val().trim()));
 
@@ -280,12 +280,9 @@
             $(".custom-select").val('Chose an Option:');
 
         } else {
-            alert(validity)
+            alert(`Warning: ${validity}`)
         }
     });
-
-    // Function to ensure that all of the entry forms are properly filled out, none may be blank.
-    // This will need to be improved upon.
 
     function checkName() {
         let validResponse = true;
@@ -327,29 +324,10 @@
         checkForm();
     }
 
-    function checkEntries() {
-
-    }
-/*    function checkForm2() {
-        let validResponse = true;
-
-        let checkName = $('#name').val().trim();
-        console.log(checkName);
-        const parse_name = /([a-zA-Z][^0-9])$/;
-        if (checkName === "") {
-            validResponse = false;
-            console.log(validResponse)
-        } else
-
-
-        let checkPhoto = $('#photo').val().trim();
-        console.log(checkPhoto);
-        const parse_url = /^((https?|ftp):\/\/.*(jpg|jpeg|png|gif|bmp))$/
-
-    }*/
 
     function checkForm(validResponse) {
-        //let validResponse;
+        // Checks the Value entered as the Persons 'Name' and ensures that it is simply letters, and in the
+        // format 'Name' || 'FirstName LastName' || 'FirstName LastInitial'.--------------------------------------------
 
         let checkName = $('#name').val().trim();
         console.log(checkName);
@@ -357,25 +335,22 @@
 
         if (!parse_name.test(checkName)) {
             console.log('Name Not Valid');
-            validResponse = 'Name Not Valid';
+            validResponse = `That is not a valid entry for 'Name'.`;
             console.log(validResponse);
-            return validResponse
+            return validResponse // Returns Error Message.
         }
 
-        //console.log(validResponse);
-
+        // Checks the Photo URL to ensure that it is in the format of an image URL -------------------------------------
         let checkPhoto = $('#photo').val().trim();
         console.log(checkPhoto);
         const parse_url = /^((https?|ftp):\/\/.*\.(?:png|jpg|gif|jpeg|bmp))/i;
 
         if (!parse_url.test(checkPhoto)) {
             console.log('Photo Not Valid');
-            validResponse = 'Photo Not Valid';
+            validResponse = `That is not an acceptable photo url.`;
             console.log(validResponse);
-            return validResponse;
+            return validResponse; // Returns Error Message.
         }
-
-        //console.log(validResponse);
 
         /*$(".form-control").each(function () {
 
@@ -385,49 +360,21 @@
             }
         });*/
 
+        // Checks to ensure that each of the questions in the survey has been properly answered ------------------------
         $(".custom-select").each(function () {
 
             //console.log($(this).val());
             if (isNaN(parseInt($(this).val()))) {
-                validResponse = 'Missing a question';
+                validResponse = `You must answer all of the questions in the survey.`;
                 console.log('Missing a question');
                 console.log(validResponse);
-                return validResponse;
+                return validResponse; // Returns Error Message.
             }
-            //console.log(validResponse);
 
         });
 
         console.log(validResponse);
-        // calculateResults();
-        return validResponse
-    }
-
-    function calculateResults() {
-        console.log('dont do that');
-        /*let newUserScores = [];
-
-        for (let k = 1; k <= 10; k++) {
-            newUserScores.push(parseInt($(`#q${[k]}`).val()))
-        }
-
-        let newUser = {
-            name: $("#name").val().trim(),
-            photo: $("#photo").val().trim(),
-            scores: newUserScores
-        };
-
-        //console.log(newUser);
-        //console.log(typeof newUser.scores[2]);
-
-        $.post("/api/friends", newUser)
-            .then(function (data) {
-                console.log(JSON.stringify(data, null, 2));
-                $("#match-name").text(data.name);
-                $("#match-photo").attr('src', data.photo);
-
-                $("#quizResultsModal").modal('show');
-            });*/
+        return validResponse // Returns 'true' if all the form fields check out.
     }
 
 </script>
