@@ -4,10 +4,7 @@
 
 Friend Finder is a web application that lives up to it's name... It is a compatibility-based web application for matching two people with similar personalities, which are ascertained by a rigorous ten-question survey.  The user answers the ten questions, and the application analyzes the answers and responds with the best match for the user.
 
-* [Deployed Site](https://ffndr.herokuapp.com/)
-
 ![Screenshot](app/public/images/home.png)
-![Screenshot](app/public/images/survey.png) 
 
 ## Getting Started
 
@@ -54,6 +51,8 @@ That is really all there is to starting the application running, after that it i
 In the test folder of the repository there is a simple.js, which is a solution that works and runs, but only checks to ensure that no field has been left blank, whereas the one in the survey.html file uses Regular Expressions (RegEx) to ensure that the user has properly entered text for a name, and also checks to ensure that they have entered a valid image URL for their photo, in addition to ensuring all the quiz questions are answered.
 
 ## Deployment
+
+* [Deployed Site](https://ffndr.herokuapp.com/)
 
 I personally have this application deployed using Heroku, simply by creating an app within Heroku and then linking my GitHub repository to it and deploying the main branch, which is a very simply and painless process.
 
