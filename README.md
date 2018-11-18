@@ -4,6 +4,9 @@
 
 Friend Finder is a web application that lives up to it's name... It is a compatibility-based web application for matching two people with similar personalities, which are ascertained by a rigorous ten-question survey.  The user answers the ten questions, and the application analyzes the answers and responds with the best match for the user.
 
+![Screenshot](app/public/images/home.png)
+
+![Screenshot](app/public/images/survey.png) 
 
 ## Getting Started
 
@@ -42,11 +45,8 @@ Friend Finder is run locally using Node.js, to begin the server simply path into
 node server.js
 ```
 
-This starts the server which is currently set to run at PORT 8080.
-
-
-
-That is really all there is to starting the application running, it is then all done in your browser.
+This starts the server which is currently set to run at PORT 8080 (http://localhost:8080/).
+That is really all there is to starting the application running, after that it is then all done in your browser.
 
 ### Notes
 
@@ -54,14 +54,15 @@ In the test folder of the repository there is a simple.js, which is a solution t
 
 ## Deployment
 
-This will bring you to the inqu
+I personally have this application deployed using Heroku, simply by creating an app within Heroku and then linking my GitHub repository to it and deploying the main branch, which is a very simply and painless process.
 
 ## Built With
 
 * [Node.js](https://nodejs.org/en/) - Runtime Environment
 * [Express.js](https://expressjs.com/) - Web Framework
+* [Bootstrap](https://getbootstrap.com/) - CSS Framework
+* [Font Awesome](https://fontawesome.com/) - Icons
 * [gitignore.io](https://www.gitignore.io/) - For creating the .gitignore
-* [Screencastify](https://www.screencastify.com/) - For the gifs in the README.md
 * [WebStorm](https://www.jetbrains.com/webstorm/) - IDE
 
 ## Authors
