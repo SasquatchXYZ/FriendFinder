@@ -4,11 +4,10 @@
 
 Friend Finder is a web application that lives up to it's name... It is a compatibility-based web application for matching two people with similar personalities, which are ascertained by a rigorous ten-question survey.  The user answers the ten questions, and the application analyzes the answers and responds with the best match for the user.
 
-![Screenshot](app/public/images/home.png)
-
-![Screenshot](app/public/images/survey.png) 
-
 * [Deployed Site](https://ffndr.herokuapp.com/)
+
+![Screenshot](app/public/images/home.png)
+![Screenshot](app/public/images/survey.png) 
 
 ## Getting Started
 
